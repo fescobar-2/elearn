@@ -8,12 +8,6 @@ var InstructorSchema = mongoose.Schema({
 	last_name: {
 		type: String
 	},
-	address: [{
-		street_address:{type: String},
-		city:{type: String},
-		state:{type: String},
-		zip:{type: String}
-	}],
 	username: {
 		type: String
 	},

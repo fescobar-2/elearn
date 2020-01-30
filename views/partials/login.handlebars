@@ -1,15 +1,15 @@
 {{#if user}}
-	<h5>Welcome Back {{user.username}}</h5>
+	<h5>Bienvenido {{user.username}}</h5>
 	<ul class="alt">
-	<li><a href="/{{type}}s/classes">My Classes</a></li>
-	<li><a href="/users/logout">Logout</a></li>
+	<li><a href="/{{type}}s/classes">Mis cursos</a></li>
+	<li><a href="/users/logout">Cerrar Sesión</a></li>
 	</ul>
 {{else}}
-<h4>Student & Instructor Login</h4>
+<h4>Ingreso</h4>
 	<form method="post" action="/users/login">
-		<label> Username: </label>
+		<label> Nombre de Usuario: </label>
 		<input type="text" name="username">
-		<label> Password: </label>
+		<label> Contraseña: </label>
 		<input type="password" name="password">
 		<input type="submit" class="button" value="Login">
 	</form>
