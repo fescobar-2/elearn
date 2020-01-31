@@ -1,4 +1,4 @@
-<h2>{{instructor.first_name}}'s Classes</h2>
+<h2>Cursos de {{instructor.first_name}}</h2>
 <table cellspacing="0" cellpadding="0">
 	<thead>
 		<tr>
@@ -13,8 +13,8 @@
 			<tr>
 				<td>{{class_id}}</td>
 				<td>{{class_title}}</td>
-				<td><a href="/classes/{{class_id}}/lessons">View Lessons</a></td>
-				<td><a href="/instructors/classes/{{class_id}}/lessons/new">Add Lesson</a></td>
+				<td><a href="/classes/{{class_id}}/lessons">Ver Lecciones</a></td>
+				<td><a href="/instructors/classes/{{class_id}}/lessons/new">Agregar Lección</a></td>
 			</tr>
 		{{/each}}
 	</tbody>
