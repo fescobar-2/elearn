@@ -18,20 +18,27 @@ router.post('/classes/register', function(req, res){
 	info['class_id'] = req.body.class_id;
 	info['class_title'] = req.body.class_title;
 
-	var comparacion_id = student.classes.class_id;
-	
-	if( comparacion_id == info['class_id']){
+	// var comparacion_id = student.classes.class_id;
+	var classes_ids; // ids of the classes to which the student is registered
+
+	Student.getStudentByUsername(req.user.username, function(err, student) {
+		if(err) throw err;
+		for (_class in student.classes) {
+			classes_ids.push(_class.class_id); // populate the list of ids
+		}
+	});
+
+	// check if the student is already in the class
+	if(classes_ids.includes(info['class_id'])) {
 		req.flash('error_msg', 'You are already registered to this class');
-		res.redirect('/students/classes');	
-	}else{
-		Student.register(info, function(err, student){
+	} else {
+		Student.register(info, function(err, student) {
 			if(err) throw err;
 			console.log(student);
 		});
 		req.flash('success_msg', 'You are now registered');
-		res.redirect('/students/classes');		
 	}
-
+	res.redirect('/students/classes');
 
 /*if (classes.class_id == req.body.class_id)
 	Student.getStudentByUsername(req.user.username, function(err,student){
@@ -45,6 +52,5 @@ router.post('/classes/register', function(req, res){
 	})*/
 
 });
-
 
 module.exports = router;
