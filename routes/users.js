@@ -20,15 +20,11 @@ router.post('/register', function(req, res, next) {
  	// Get Form Values
 	var first_name     	= req.body.first_name;
 	var last_name     	= req.body.last_name;
-	var street_address  = req.body.street_address;
-	var city     		= req.body.city;
-	var state    		= req.body.state;
-	var zip     		= req.body.zip;
 	var email    		= req.body.email;
 	var username 		= req.body.username;
 	var password 		= req.body.password;
 	var password2 		= req.body.password2;
-	var type            = req.body.type;
+	var type            = 'student';
 
 	// Form Validation
 	req.checkBody('first_name', 'First name field is required').notEmpty();
@@ -59,12 +55,6 @@ router.post('/register', function(req, res, next) {
 			var newStudent = new Student({
 				first_name: first_name,
 				last_name: last_name,
-				address: [{
-					street_address: street_address,
-					city: city,
-					state: state,
-					zip: zip
-				}],
 				email: email,
 				username:username
 			});
@@ -77,12 +67,6 @@ router.post('/register', function(req, res, next) {
 			var newInstructor = new Instructor({
 				first_name: first_name,
 				last_name: last_name,
-				address: [{
-					street_address: street_address,
-					city: city,
-					state: state,
-					zip: zip
-				}],
 				email: email,
 				username:username
 			});

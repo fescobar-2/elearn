@@ -19,12 +19,13 @@ router.post('/classes/register', function(req, res){
 	info['class_title'] = req.body.class_title;
 
 	// var comparacion_id = student.classes.class_id;
-	var classes_ids; // ids of the classes to which the student is registered
+	var classes_ids = [] ; // ids of the classes to which the student is registered
 
 	Student.getStudentByUsername(req.user.username, function(err, student) {
 		if(err) throw err;
 		for (_class in student.classes) {
-			classes_ids.push(_class.class_id); // populate the list of ids
+			//console.log(student.classes[_class].class_id.toString());
+			classes_ids.push(student.classes[_class].class_id.toString()); // populate the list of ids
 		}
 	});
 
@@ -34,7 +35,6 @@ router.post('/classes/register', function(req, res){
 	} else {
 		Student.register(info, function(err, student) {
 			if(err) throw err;
-			console.log(student);
 		});
 		req.flash('success_msg', 'You are now registered');
 	}
