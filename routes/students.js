@@ -18,27 +18,25 @@ router.post('/classes/register', function(req, res){
 	info['class_id'] = req.body.class_id;
 	info['class_title'] = req.body.class_title;
 
-	// var comparacion_id = student.classes.class_id;
-	var classes_ids = [] ; // ids of the classes to which the student is registered
-
 	Student.getStudentByUsername(req.user.username, function(err, student) {
 		if(err) throw err;
-		for (_class in student.classes) {
-			//console.log(student.classes[_class].class_id.toString());
-			classes_ids.push(student.classes[_class].class_id.toString()); // populate the list of ids
-		}
-	});
 
-	// check if the student is already in the class
-	if(classes_ids.includes(info['class_id'])) {
-		req.flash('error_msg', 'You are already registered to this class');
-	} else {
-		Student.register(info, function(err, student) {
-			if(err) throw err;
-		});
-		req.flash('success_msg', 'You are now registered');
-	}
-	res.redirect('/students/classes');
+		var classes_ids = [] ; // ids of the classes to which the student is registered
+		for (i in student.classes) {
+			classes_ids.push(student.classes[i].class_id.toString()); // populate the list of ids
+		}
+
+		// check if the student is already in the class
+		if(classes_ids.includes(info['class_id'])) {
+			req.flash('error_msg', 'You are already registered to this class');
+		} else {
+			Student.register(info, function(err, student) {
+				if(err) throw err;
+			});
+			req.flash('success_msg', 'You are now registered');
+		}
+		res.redirect('/students/classes');
+	});
 
 /*if (classes.class_id == req.body.class_id)
 	Student.getStudentByUsername(req.user.username, function(err,student){
