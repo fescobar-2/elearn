@@ -44,3 +44,17 @@ module.exports.addLesson = function(info, callback){
 		callback
 		);
 }
+
+// Add class
+module.exports.addClass = function(info, callback){
+	class_id = info['class_id'];
+	title = info['title'];
+	description = info['description'];
+	instructor = info['instructor'];
+	lessons = info['lessons'];
+
+	info.save(function (err, info) {
+      if (err) return console.error(err);
+    });
+}
+
