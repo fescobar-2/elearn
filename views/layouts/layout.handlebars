@@ -39,7 +39,9 @@
 	</div>
 	
 	<div class="col_3">
-		{{>login}}
+		{{#unless user}}
+			{{>login}}
+		{{/unless}}
 	</div>
 	
 	<hr />

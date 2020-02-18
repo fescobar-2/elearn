@@ -53,7 +53,7 @@ module.exports.addClass = function(info, callback){
 	instructor = info['instructor'];
 	lessons = info['lessons'];
 
-	info.save(function (err, info) {
+	newClass.save(function (err, newClass) {
       if (err) return console.error(err);
     });
 }
