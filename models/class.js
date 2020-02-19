@@ -46,14 +46,8 @@ module.exports.addLesson = function(info, callback){
 }
 
 // Add class
-module.exports.addClass = function(info, callback){
-	class_id = info['class_id'];
-	title = info['title'];
-	description = info['description'];
-	instructor = info['instructor'];
-	lessons = info['lessons'];
-
-	newClass.save(function (err, newClass) {
+module.exports.addClass = function(newClass, callback){
+	newClass.save(function (err, cl) {
       if (err) return console.error(err);
     });
 }

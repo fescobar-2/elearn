@@ -66,33 +66,26 @@ router.get('/classes/new', function(req, res, next){
 })
 
 router.post('/classes/new', function(req, res, next){
-	// Get Values
-	var info = [];
-	info['class_id'] = req.params.id;
-	info['title'] = req.body.title;
-	info['description'] = req.body.description;
-	info['instructor'] = req.body.instructor;
-	info['lessons'] = [{}];
 
-	if(errors){
+	/*if(errors){
 		res.render('/classes', {
 			errors: errors
 		});
-	} else {
+	} else {*/
 		var newClass = new Class({
-			title: title,
-			description:description,
-			instructor: instructor,
-			lesssons: [{}]
+			title: req.body.title,
+			description:req.body.description,
+			instructor: req.body.instructor
 		});
 
-		Class.addClass(info, function(err, lesson){
-			console.log('Class Added..');
+		Class.addClass(newClass, function(err, cl){
+			if (err) throw err;
 		});
+	
 
 		req.flash('success_msg','Class Added');
-		res.redirect('/instructors/classes');
-	}	
+		res.redirect('/');
+	/*}	*/
 });
 
 

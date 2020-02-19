@@ -7,6 +7,7 @@ var Class = require('../models/class');
 router.get('/', function(req, res, next) {
 	Class.getClasses(function(err, classes){
 		if(err) throw err;
+		console.log(classes);
 		res.render('classes/index', { classes: classes });
 	},3);
 });
