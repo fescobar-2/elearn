@@ -76,6 +76,11 @@ app.get('*', function(req, res, next) {
   res.locals.user = req.user || null;
   if(req.user){
     res.locals.type = req.user.type;
+    if(res.locals.type == 'student'){
+      res.locals.isStudent = true;
+    }else{
+      res.locals.isInstructor = true;
+    }
   }
   next();
 });

@@ -52,3 +52,8 @@ module.exports.addClass = function(newClass, callback){
     });
 }
 
+//Drop Class
+module.exports.dropClass = function(id, callback){
+	console.log('dsadas');
+	Class.findByIdAndRemove(id, callback);
+}

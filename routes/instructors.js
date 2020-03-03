@@ -28,7 +28,7 @@ router.post('/classes/register', function(req, res){
 			}
 		}
 
-		// check if the student is already in the class
+		// check if the instructor is already in the class
 		if(classes_ids.includes(info['class_id'])) {
 			req.flash('error_msg', 'You are already registered to this class');
 		} else {
@@ -80,7 +80,7 @@ router.post('/classes/new', function(req, res, next){
 			instructor: req.body.instructor
 		});
 
-		Class.addClass(newClass, function(err, cl){
+		Class.addClass(newClass, function(err){
 			if (err) throw err;
 		});
 	
@@ -90,6 +90,14 @@ router.post('/classes/new', function(req, res, next){
 	/*}	*/
 });
 
+
+//Drop Class
+router.get('/classes/:id/delete', function(req, res, next){
+	Class.dropClass(req.params.id, function(err){
+		if (err) throw err;
+	});
+	res.redirect('/classes');
+})
 
 
 

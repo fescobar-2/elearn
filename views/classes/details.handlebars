@@ -16,7 +16,9 @@
 		<input type="hidden" name="student_id" value="{{user._id}}">
 		<input type="hidden" name="class_id" value="{{class._id}}">
 		<input type="hidden" name="class_title" value="{{class.title}}">
+		{{#if isStudent}}
 		<input type="submit" class="button" value="Register For This Class">
+		{{/if}}
 	</form>
 {{else}}
 	<p>You must be logged in to register for this class</p>
