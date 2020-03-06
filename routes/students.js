@@ -22,10 +22,11 @@ router.post('/classes/register', function(req, res){
 		if(err) throw err;
 
 		var classes_ids = [] ; // ids of the classes to which the student is registered
-		for (i in student.classes) {
-			classes_ids.push(student.classes[i].class_id.toString()); // populate the list of ids
+		if (!(student.classes === undefined || student.classes.length == 0)) {
+			for (i = 0; i < student.classes.length; i++) {
+				classes_ids.push(student.classes[i].class_id.toString()); // populate the list of ids
+			}
 		}
-
 		// check if the student is already in the class
 		if(classes_ids.includes(info['class_id'])) {
 			req.flash('error_msg', 'You are already registered to this class');
