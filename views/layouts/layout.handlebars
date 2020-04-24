@@ -11,9 +11,14 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li class="current"><a href="/">Inicio</a></li>
-<li><a href="/classes">Cursos</a></li>
+	<li class="current"><a href="/">Inicio</a></li>
+	<li><a href="/classes">Cursos</a></li>
+	{{#if user}}
+		<li><a href="/{{type}}s/classes">Mis cursos</a></li>
+		<li><a href="/users/logout">Cerrar Sesión</a></li>
+	{{/if}}
 </ul>
+
 
 <div class="grid">
 <div class="col_12">
@@ -38,13 +43,11 @@
 		{{{body}}}
 	</div>
 	
-	<div class="col_3">
-			{{>login}}
-	</div>
+
 	
 	<hr />
 	
-		{{>classes}}
+		<!-- {{>classes}} -->
 	
 </div>
 

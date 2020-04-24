@@ -64,7 +64,11 @@ router.post('/classes/:id/lessons/new', function(req, res, next){
 
 //NEW!! Adding new Classes from Instructor page
 router.get('/classes/new', function(req, res, next){
-	res.render('instructors/newclass');
+	Instructor.getAll(function(err, instructors){
+		if(err) throw err;
+		res.render('instructors/newclass', { instructors : instructors });
+	}, 5)
+
 })
 
 router.post('/classes/new', function(req, res, next){

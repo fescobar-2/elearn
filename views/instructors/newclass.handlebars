@@ -10,8 +10,13 @@
 	</div><br />
 	<div>
 		<label>Instructor: </label>
-		<input type="text" name="instructor">
+		<select>
+			{{#each instructors}}
+				<option value="{{_id}}">{{first_name}}</option>
+			{{/each}}
+		</select>
 	</div><br />
+
 	<div>
 		<input type="submit" value="Agregar Curso">
 	</div>

@@ -1,9 +1,5 @@
 {{#if user}}
 	<h5>Bienvenido {{user.username}}</h5>
-	<ul class="alt">
-	<li><a href="/{{type}}s/classes">Mis cursos</a></li>
-	<li><a href="/users/logout">Cerrar Sesión</a></li>
-	</ul>
 {{else}}
 <h4>Ingreso</h4>
 	<form method="post" action="/users/login">

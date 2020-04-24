@@ -42,3 +42,8 @@ module.exports.register = function(info, callback) {
       callback
     );
 }
+
+//Get all instructors
+module.exports.getAll = function(callback, limit){
+	Instructor.find(callback).limit(limit);
+}

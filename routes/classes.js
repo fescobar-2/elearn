@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 	Class.getClasses(function(err, classes){
 		if(err) throw err;
 		res.render('classes/index', { classes: classes });
-	},3);
+	},4);
 });
 
 // Class Details
